@@ -416,3 +416,27 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# ── GSD baseline (auto-generated) ──
+.gsd
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/
+*.code-workspace
+.env
+.env.*
+!.env.example
+.next/
+dist/
+build/
+__pycache__/
+.venv/
+venv/
+target/
+vendor/
+coverage/
+.cache/
+tmp/
