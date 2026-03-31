@@ -2,6 +2,12 @@ name: Publish NuGet package
 
 on:
   workflow_dispatch:
+    inputs:
+      package_version:
+        description: Version to publish to NuGet
+        required: true
+        default: 1.0.0
+        type: string
 
 permissions:
   contents: read
@@ -9,6 +15,7 @@ permissions:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    environment: nuget
     env:
       PROJECT_PATH: src/Azure.InMemory/Azure.InMemory.csproj
       SOLUTION_PATH: Azure.InMemory.sln
@@ -22,7 +29,7 @@ jobs:
         with:
           dotnet-version: 10.0.x
 
-      - name: Compute package metadata
+      - name: Read package metadata
         id: metadata
         shell: bash
         run: |
@@ -33,25 +40,13 @@ jobs:
 
           project_path = Path(os.environ['PROJECT_PATH'])
           root = ET.parse(project_path).getroot()
-
-          def read_property(name: str) -> str:
-              node = root.find(f".//{name}")
-              return (node.text or "").strip() if node is not None and node.text else ""
-
-          package_id = read_property('PackageId')
-          version_value = read_property('Version') or read_property('VersionPrefix')
+          node = root.find('.//PackageId')
+          package_id = (node.text or '').strip() if node is not None and node.text else ''
 
           if not package_id:
               raise SystemExit('PackageId was not found in the project file.')
 
-          if not version_value:
-              raise SystemExit('Version/VersionPrefix was not found in the project file.')
-
-          version_parts = version_value.split('.')
-          if len(version_parts) < 2 or not all(part.isdigit() for part in version_parts[:2]):
-              raise SystemExit(f'Expected Version or VersionPrefix to start with major.minor, got: {version_value}')
-
-          package_version = f"{version_parts[0]}.{version_parts[1]}.{os.environ['GITHUB_RUN_NUMBER']}"
+          package_version = os.environ['PACKAGE_VERSION']
           package_file = f"{package_id}.{package_version}.nupkg"
 
           github_output = Path(os.environ['GITHUB_OUTPUT'])
@@ -60,6 +55,8 @@ jobs:
               output.write(f"package_version={package_version}\n")
               output.write(f"package_file={package_file}\n")
           PY
+        env:
+          PACKAGE_VERSION: ${{ inputs.package_version }}
 
       - name: Restore
         run: dotnet restore "$SOLUTION_PATH"

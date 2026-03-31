@@ -9,11 +9,11 @@ This package includes seams for Service Bus, Blob Storage, and Key Vault. The qu
 Add the package from NuGet:
 
 ```xml
-<PackageReference Include="Forgate.Azure.InMemory" Version="x.y.z" />
+<PackageReference Include="Forgate.Azure.InMemory" Version="1.0.0" />
 ```
 
 ```bash
-dotnet add package Forgate.Azure.InMemory --version x.y.z
+dotnet add package Forgate.Azure.InMemory --version 1.0.0
 ```
 
 This README is written for package consumers, not repo contributors. It assumes the package is already available on NuGet. A fresh local-feed consumer proof is a separate acceptance step, not a hidden prerequisite for using the API shown here.
