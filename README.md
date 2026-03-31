@@ -1,8 +1,10 @@
 # Forgate.Azure.InMemory
 
-Forgate.Azure.InMemory packages internal-friendly seams for Azure dependencies so application code can resolve focused factories from DI and switch between SDK-backed and in-memory providers intentionally.
+Forgate.Azure.InMemory is a .NET library that puts small, DI-friendly seams in front of Azure dependencies. It lets your application code depend on focused abstractions while switching the backend between the real Azure SDK and deterministic in-memory implementations without rewriting the consuming code.
 
-This package includes seams for Service Bus, Blob Storage, and Key Vault. The quickstart below focuses on the in-memory Service Bus provider because it is the current package-facing seam another internal team can use immediately without external infrastructure.
+The package is built for teams that want faster tests, simpler local development, and clearer boundaries around Azure resources. Instead of spreading raw SDK clients across the codebase, you register a provider once, resolve a factory from DI, and keep the application seam stable whether the host is talking to Azure or running fully in memory.
+
+This package currently includes seams for Service Bus, Blob Storage, and Key Vault. The quickstart below starts with the in-memory Service Bus provider because it is the most complete package-facing flow and shows the intended usage pattern clearly.
 
 ## Install
 
