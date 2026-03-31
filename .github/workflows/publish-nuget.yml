@@ -1,0 +1,96 @@
+name: Publish NuGet package
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    env:
+      PROJECT_PATH: src/Azure.InMemory/Azure.InMemory.csproj
+      SOLUTION_PATH: Azure.InMemory.sln
+      PACK_OUTPUT_DIR: artifacts/pack
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 10
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Compute package metadata
+        id: metadata
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import os
+          import xml.etree.ElementTree as ET
+          from pathlib import Path
+
+          project_path = Path(os.environ['PROJECT_PATH'])
+          root = ET.parse(project_path).getroot()
+
+          def read_property(name: str) -> str:
+              node = root.find(f".//{name}")
+              return (node.text or "").strip() if node is not None and node.text else ""
+
+          package_id = read_property('PackageId')
+          version_value = read_property('Version') or read_property('VersionPrefix')
+
+          if not package_id:
+              raise SystemExit('PackageId was not found in the project file.')
+
+          if not version_value:
+              raise SystemExit('Version/VersionPrefix was not found in the project file.')
+
+          version_parts = version_value.split('.')
+          if len(version_parts) < 2 or not all(part.isdigit() for part in version_parts[:2]):
+              raise SystemExit(f'Expected Version or VersionPrefix to start with major.minor, got: {version_value}')
+
+          package_version = f"{version_parts[0]}.{version_parts[1]}.{os.environ['GITHUB_RUN_NUMBER']}"
+          package_file = f"{package_id}.{package_version}.nupkg"
+
+          github_output = Path(os.environ['GITHUB_OUTPUT'])
+          with github_output.open('a', encoding='utf-8') as output:
+              output.write(f"package_id={package_id}\n")
+              output.write(f"package_version={package_version}\n")
+              output.write(f"package_file={package_file}\n")
+          PY
+
+      - name: Restore
+        run: dotnet restore "$SOLUTION_PATH"
+
+      - name: Test
+        run: dotnet test "$SOLUTION_PATH" --configuration Release --no-restore
+
+      - name: Build
+        run: dotnet build "$SOLUTION_PATH" --configuration Release --no-restore
+
+      - name: Pack
+        run: |
+          mkdir -p "$PACK_OUTPUT_DIR"
+          dotnet pack "$PROJECT_PATH" \
+            --configuration Release \
+            --no-build \
+            --output "$PACK_OUTPUT_DIR" \
+            -p:PackageVersion="${{ steps.metadata.outputs.package_version }}"
+
+      - name: Upload package artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.metadata.outputs.package_id }}-${{ steps.metadata.outputs.package_version }}
+          path: ${{ env.PACK_OUTPUT_DIR }}/${{ steps.metadata.outputs.package_file }}
+          if-no-files-found: error
+
+      - name: Publish to NuGet
+        env:
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+        run: |
+          dotnet nuget push "$PACK_OUTPUT_DIR/${{ steps.metadata.outputs.package_file }}" \
+            --api-key "$NUGET_API_KEY" \
+            --source https://api.nuget.org/v3/index.json \
+            --skip-duplicate

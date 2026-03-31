@@ -1,7 +1,8 @@
+using Azure;
 using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
 
-namespace Azure.InMemory.Blob.Sdk;
+namespace Forgate.Azure.InMemory.Blob.Sdk;
 
 public sealed class AzureBlobSdkFactory : IAzureBlobFactory
 {

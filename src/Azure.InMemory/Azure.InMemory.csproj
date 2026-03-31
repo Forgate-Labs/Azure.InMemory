@@ -1,10 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <AssemblyName>Azure.InMemory</AssemblyName>
-    <RootNamespace>Azure.InMemory</RootNamespace>
-    <PackageId>Azure.InMemory</PackageId>
+    <AssemblyName>Forgate.Azure.InMemory</AssemblyName>
+    <RootNamespace>Forgate.Azure.InMemory</RootNamespace>
+    <PackageId>Forgate.Azure.InMemory</PackageId>
     <Version>1.0.0</Version>
-    <Title>Azure.InMemory</Title>
+    <Title>Forgate.Azure.InMemory</Title>
     <Description>Internal-friendly Azure resource seams with deterministic in-memory Service Bus, Blob, and Key Vault providers for infrastructure-free tests.</Description>
     <Authors>Forgate Labs</Authors>
     <Company>Forgate Labs</Company>

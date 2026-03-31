@@ -1,12 +1,12 @@
-using Azure.InMemory.ServiceBus;
-using Azure.InMemory.ServiceBus.InMemory;
-using Azure.InMemory.ServiceBus.Sdk;
+using Forgate.Azure.InMemory.ServiceBus;
+using Forgate.Azure.InMemory.ServiceBus.InMemory;
+using Forgate.Azure.InMemory.ServiceBus.Sdk;
 using Azure.Messaging.ServiceBus;
 using Azure.Messaging.ServiceBus.Administration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
-namespace Azure.InMemory.DependencyInjection;
+namespace Forgate.Azure.InMemory.DependencyInjection;
 
 public static class AzureServiceBusRegistrationExtensions
 {

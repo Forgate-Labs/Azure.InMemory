@@ -1,10 +1,10 @@
-using Azure.InMemory.DependencyInjection;
-using Azure.InMemory.ServiceBus;
-using Azure.InMemory.ServiceBus.InMemory;
+using Forgate.Azure.InMemory.DependencyInjection;
+using Forgate.Azure.InMemory.ServiceBus;
+using Forgate.Azure.InMemory.ServiceBus.InMemory;
 using Azure.Messaging.ServiceBus;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Azure.InMemory.ExternalConsumer;
+namespace Forgate.Azure.InMemory.ExternalConsumer;
 
 public sealed class ExternalConsumerQueueRedeliveryTests
 {

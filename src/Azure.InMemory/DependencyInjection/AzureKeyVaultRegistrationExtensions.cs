@@ -1,11 +1,11 @@
-using Azure.InMemory.KeyVault;
-using Azure.InMemory.KeyVault.InMemory;
-using Azure.InMemory.KeyVault.Sdk;
+using Forgate.Azure.InMemory.KeyVault;
+using Forgate.Azure.InMemory.KeyVault.InMemory;
+using Forgate.Azure.InMemory.KeyVault.Sdk;
 using Azure.Security.KeyVault.Secrets;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
-namespace Azure.InMemory.DependencyInjection;
+namespace Forgate.Azure.InMemory.DependencyInjection;
 
 public static class AzureKeyVaultRegistrationExtensions
 {

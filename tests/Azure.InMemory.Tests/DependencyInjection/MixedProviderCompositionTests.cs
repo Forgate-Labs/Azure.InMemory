@@ -1,22 +1,22 @@
 using Azure;
 using Azure.Core;
-using Azure.InMemory.Blob;
-using Azure.InMemory.Blob.InMemory;
-using Azure.InMemory.Blob.Sdk;
-using Azure.InMemory.DependencyInjection;
-using Azure.InMemory.KeyVault;
-using Azure.InMemory.KeyVault.InMemory;
-using Azure.InMemory.KeyVault.Sdk;
-using Azure.InMemory.ServiceBus;
-using Azure.InMemory.ServiceBus.InMemory;
-using Azure.InMemory.ServiceBus.Sdk;
+using Forgate.Azure.InMemory.Blob;
+using Forgate.Azure.InMemory.Blob.InMemory;
+using Forgate.Azure.InMemory.Blob.Sdk;
+using Forgate.Azure.InMemory.DependencyInjection;
+using Forgate.Azure.InMemory.KeyVault;
+using Forgate.Azure.InMemory.KeyVault.InMemory;
+using Forgate.Azure.InMemory.KeyVault.Sdk;
+using Forgate.Azure.InMemory.ServiceBus;
+using Forgate.Azure.InMemory.ServiceBus.InMemory;
+using Forgate.Azure.InMemory.ServiceBus.Sdk;
 using Azure.Messaging.ServiceBus;
 using Azure.Messaging.ServiceBus.Administration;
 using Azure.Security.KeyVault.Secrets;
 using Azure.Storage.Blobs;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Azure.InMemory.Tests.DependencyInjection;
+namespace Forgate.Azure.InMemory.Tests.DependencyInjection;
 
 public sealed class MixedProviderCompositionTests
 {

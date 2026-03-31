@@ -1,6 +1,6 @@
 using Azure.Messaging.ServiceBus;
 
-namespace Azure.InMemory.ServiceBus;
+namespace Forgate.Azure.InMemory.ServiceBus;
 
 public interface IAzureServiceBusFactory
 {

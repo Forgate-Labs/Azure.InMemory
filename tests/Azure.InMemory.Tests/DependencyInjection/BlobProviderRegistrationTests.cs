@@ -1,11 +1,12 @@
-using Azure.InMemory.Blob;
-using Azure.InMemory.Blob.InMemory;
-using Azure.InMemory.Blob.Sdk;
-using Azure.InMemory.DependencyInjection;
+using Azure;
+using Forgate.Azure.InMemory.Blob;
+using Forgate.Azure.InMemory.Blob.InMemory;
+using Forgate.Azure.InMemory.Blob.Sdk;
+using Forgate.Azure.InMemory.DependencyInjection;
 using Azure.Storage.Blobs;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Azure.InMemory.Tests.DependencyInjection;
+namespace Forgate.Azure.InMemory.Tests.DependencyInjection;
 
 public sealed class BlobProviderRegistrationTests
 {

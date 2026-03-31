@@ -1,10 +1,10 @@
-using Azure.InMemory.DependencyInjection;
-using Azure.InMemory.ServiceBus;
-using Azure.InMemory.ServiceBus.InMemory;
+using Forgate.Azure.InMemory.DependencyInjection;
+using Forgate.Azure.InMemory.ServiceBus;
+using Forgate.Azure.InMemory.ServiceBus.InMemory;
 using Azure.Messaging.ServiceBus;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Azure.InMemory.Tests.ServiceBus.InMemory;
+namespace Forgate.Azure.InMemory.Tests.ServiceBus.InMemory;
 
 public sealed class InMemoryServiceBusRedeliveryTests
 {

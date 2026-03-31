@@ -1,4 +1,4 @@
-namespace Azure.InMemory.Blob;
+namespace Forgate.Azure.InMemory.Blob;
 
 public interface IAzureBlobFactory
 {

@@ -1,7 +1,7 @@
 using System.Collections.Concurrent;
 using Azure.Messaging.ServiceBus;
 
-namespace Azure.InMemory.ServiceBus.InMemory;
+namespace Forgate.Azure.InMemory.ServiceBus.InMemory;
 
 public sealed class InMemoryServiceBusState
 {

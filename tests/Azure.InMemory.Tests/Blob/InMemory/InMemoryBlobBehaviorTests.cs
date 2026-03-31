@@ -1,10 +1,10 @@
 using System.Text;
-using Azure.InMemory.Blob;
-using Azure.InMemory.Blob.InMemory;
-using Azure.InMemory.DependencyInjection;
+using Forgate.Azure.InMemory.Blob;
+using Forgate.Azure.InMemory.Blob.InMemory;
+using Forgate.Azure.InMemory.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Azure.InMemory.Tests.Blob.InMemory;
+namespace Forgate.Azure.InMemory.Tests.Blob.InMemory;
 
 public sealed class InMemoryBlobBehaviorTests
 {

@@ -1,4 +1,4 @@
-# Azure.InMemory.ExternalConsumer
+# Forgate.Azure.InMemory.ExternalConsumer
 
 This sample is the committed package-only consumer boundary for slice S03.
 
@@ -23,7 +23,7 @@ If you need to inspect or troubleshoot a specific stage, read `scripts/verify-s0
 ## Guardrails
 
 - Keep this project **out of** `Azure.InMemory.sln`.
-- Keep `Azure.InMemory` referenced **only** through `<PackageReference Include="Azure.InMemory" Version="1.0.0" />`.
+- Keep `Forgate.Azure.InMemory` referenced **only** through `<PackageReference Include="Forgate.Azure.InMemory" Version="1.0.0" />`.
 - Do **not** add a `ProjectReference` back to `src/Azure.InMemory/Azure.InMemory.csproj`.
 - Keep `<ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>` in the sample `.csproj` so repo-root CPM does not mask restore problems.
 
@@ -40,7 +40,7 @@ DOTNET_CLI_UI_LANGUAGE=en dotnet restore ./samples/Azure.InMemory.ExternalConsum
 
 `NuGet.Config` clears inherited package sources and points explicitly at:
 
-- `../../artifacts/pack` for the repo-local `Azure.InMemory.1.0.0.nupkg`
+- `../../artifacts/pack` for the repo-local `Forgate.Azure.InMemory.1.0.0.nupkg`
 - `https://api.nuget.org/v3/index.json` for public test dependencies
 
 The dedicated `./samples/Azure.InMemory.ExternalConsumer/.nuget/packages` folder is part of the proof: it keeps restore results isolated from shared cache state and makes feed/config problems surface directly.

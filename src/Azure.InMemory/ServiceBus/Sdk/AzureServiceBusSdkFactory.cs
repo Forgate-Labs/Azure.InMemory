@@ -1,8 +1,8 @@
-using Azure.InMemory.ServiceBus;
+using Forgate.Azure.InMemory.ServiceBus;
 using Azure.Messaging.ServiceBus;
 using Azure.Messaging.ServiceBus.Administration;
 
-namespace Azure.InMemory.ServiceBus.Sdk;
+namespace Forgate.Azure.InMemory.ServiceBus.Sdk;
 
 public sealed class AzureServiceBusSdkFactory : IAzureServiceBusFactory
 {
@@ -162,7 +162,7 @@ public sealed class AzureServiceBusSdkFactory : IAzureServiceBusFactory
                 complete: cancellationToken => args.CompleteMessageAsync(args.Message, cancellationToken),
                 deadLetter: (deadLetterReason, cancellationToken) => args.DeadLetterMessageAsync(
                     args.Message,
-                    deadLetterReason ?? "Dead-lettered by Azure.InMemory SDK adapter.",
+                    deadLetterReason ?? "Dead-lettered by Forgate.Azure.InMemory SDK adapter.",
                     string.Empty,
                     cancellationToken));
 

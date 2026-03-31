@@ -6,7 +6,6 @@ repo_root="$(cd -- "${script_dir}/.." && pwd)"
 
 readonly pack_project="${repo_root}/src/Azure.InMemory/Azure.InMemory.csproj"
 readonly pack_output_dir="${repo_root}/artifacts/pack"
-readonly expected_package="${pack_output_dir}/Azure.InMemory.1.0.0.nupkg"
 readonly consumer_project="${repo_root}/samples/Azure.InMemory.ExternalConsumer/Azure.InMemory.ExternalConsumer.csproj"
 readonly consumer_config="${repo_root}/samples/Azure.InMemory.ExternalConsumer/NuGet.Config"
 readonly consumer_packages_dir="${repo_root}/samples/Azure.InMemory.ExternalConsumer/.nuget/packages"
@@ -30,6 +29,35 @@ require_file() {
   fi
 }
 
+readarray -t package_metadata < <(python3 - "$pack_project" <<'PY'
+import sys
+import xml.etree.ElementTree as ET
+
+project_path = sys.argv[1]
+root = ET.parse(project_path).getroot()
+
+def read_property(name: str) -> str:
+    node = root.find(f".//{name}")
+    return (node.text or "").strip() if node is not None and node.text else ""
+
+package_id = read_property("PackageId")
+package_version = read_property("Version") or read_property("VersionPrefix")
+
+if not package_id:
+    raise SystemExit("PackageId was not found in the pack project.")
+
+if not package_version:
+    raise SystemExit("Version/VersionPrefix was not found in the pack project.")
+
+print(package_id)
+print(package_version)
+PY
+)
+
+readonly package_id="${package_metadata[0]}"
+readonly package_version="${package_metadata[1]}"
+readonly expected_package="${pack_output_dir}/${package_id}.${package_version}.nupkg"
+
 export DOTNET_CLI_UI_LANGUAGE="${DOTNET_CLI_UI_LANGUAGE:-en}"
 
 require_file "$pack_project"
@@ -38,7 +66,7 @@ require_file "$consumer_config"
 require_file "$solution_path"
 mkdir -p "$pack_output_dir"
 
-log_stage "Pack Azure.InMemory into ./artifacts/pack"
+log_stage "Pack ${package_id} ${package_version} into ./artifacts/pack"
 rm -f "$expected_package"
 dotnet pack "$pack_project" -c Release -o "$pack_output_dir"
 require_file "$expected_package"

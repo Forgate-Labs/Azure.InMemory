@@ -1,4 +1,4 @@
-namespace Azure.InMemory.KeyVault;
+namespace Forgate.Azure.InMemory.KeyVault;
 
 public interface IAzureKeyVaultFactory
 {

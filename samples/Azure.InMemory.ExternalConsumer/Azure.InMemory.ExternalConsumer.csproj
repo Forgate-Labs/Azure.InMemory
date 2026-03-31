@@ -1,13 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <AssemblyName>Azure.InMemory.ExternalConsumer</AssemblyName>
-    <RootNamespace>Azure.InMemory.ExternalConsumer</RootNamespace>
+    <AssemblyName>Forgate.Azure.InMemory.ExternalConsumer</AssemblyName>
+    <RootNamespace>Forgate.Azure.InMemory.ExternalConsumer</RootNamespace>
     <IsPackable>false</IsPackable>
     <ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Azure.InMemory" Version="1.0.0" />
+    <PackageReference Include="Forgate.Azure.InMemory" Version="1.0.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
     <PackageReference Include="xunit" Version="2.9.3" />
     <PackageReference Include="xunit.runner.visualstudio" Version="3.1.4">

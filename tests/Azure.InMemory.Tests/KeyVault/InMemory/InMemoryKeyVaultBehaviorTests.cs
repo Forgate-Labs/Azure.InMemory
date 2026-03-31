@@ -1,9 +1,9 @@
-using Azure.InMemory.DependencyInjection;
-using Azure.InMemory.KeyVault;
-using Azure.InMemory.KeyVault.InMemory;
+using Forgate.Azure.InMemory.DependencyInjection;
+using Forgate.Azure.InMemory.KeyVault;
+using Forgate.Azure.InMemory.KeyVault.InMemory;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Azure.InMemory.Tests.KeyVault.InMemory;
+namespace Forgate.Azure.InMemory.Tests.KeyVault.InMemory;
 
 public sealed class InMemoryKeyVaultBehaviorTests
 {

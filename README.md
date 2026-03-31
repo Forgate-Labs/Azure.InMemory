@@ -1,22 +1,22 @@
-# Azure.InMemory
+# Forgate.Azure.InMemory
 
-Azure.InMemory packages internal-friendly seams for Azure dependencies so application code can resolve focused factories from DI and switch between SDK-backed and in-memory providers intentionally.
+Forgate.Azure.InMemory packages internal-friendly seams for Azure dependencies so application code can resolve focused factories from DI and switch between SDK-backed and in-memory providers intentionally.
 
 This package includes seams for Service Bus, Blob Storage, and Key Vault. The quickstart below focuses on the in-memory Service Bus provider because it is the current package-facing seam another internal team can use immediately without external infrastructure.
 
 ## Install
 
-Add the package from your internal NuGet feed:
+Add the package from NuGet:
 
 ```xml
-<PackageReference Include="Azure.InMemory" Version="1.0.0" />
+<PackageReference Include="Forgate.Azure.InMemory" Version="x.y.z" />
 ```
 
 ```bash
-dotnet add package Azure.InMemory --version 1.0.0
+dotnet add package Forgate.Azure.InMemory --version x.y.z
 ```
 
-This README is written for package consumers, not repo contributors. It assumes the package is already available on your feed. A fresh local-feed consumer proof is a separate acceptance step, not a hidden prerequisite for using the API shown here.
+This README is written for package consumers, not repo contributors. It assumes the package is already available on NuGet. A fresh local-feed consumer proof is a separate acceptance step, not a hidden prerequisite for using the API shown here.
 
 ## Service Bus seam at a glance
 
@@ -33,8 +33,8 @@ For in-memory tests or infrastructure-free local flows, register the package wit
 ## Quickstart: register and use the in-memory Service Bus provider
 
 ```csharp
-using Azure.InMemory.DependencyInjection;
-using Azure.InMemory.ServiceBus;
+using Forgate.Azure.InMemory.DependencyInjection;
+using Forgate.Azure.InMemory.ServiceBus;
 using Azure.Messaging.ServiceBus;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -50,7 +50,7 @@ await factory.Administration.CreateQueueAsync(queueName);
 
 await using (var sender = factory.CreateSender(queueName))
 {
-    await sender.SendAsync(new ServiceBusMessage("hello from Azure.InMemory")
+    await sender.SendAsync(new ServiceBusMessage("hello from Forgate.Azure.InMemory")
     {
         MessageId = "message-001"
     });
@@ -84,7 +84,7 @@ The in-memory provider is explicit about topology to match the package seam trut
 For topic fan-out, publish to the topic path and process each subscription independently.
 
 ```csharp
-using Azure.InMemory.ServiceBus;
+using Forgate.Azure.InMemory.ServiceBus;
 using Azure.Messaging.ServiceBus;
 
 const string topicName = "orders";
@@ -138,7 +138,7 @@ await using var processor = factory.CreateQueueProcessor(
 `InMemoryServiceBusState` is a **test-only inspection surface** that `AddAzureServiceBusInMemory()` registers for observability. It is useful for assertions and diagnostics, but it is not the primary application seam. Production-facing code should depend on `IAzureServiceBusFactory` instead.
 
 ```csharp
-using Azure.InMemory.ServiceBus.InMemory;
+using Forgate.Azure.InMemory.ServiceBus.InMemory;
 
 var state = provider.GetRequiredService<InMemoryServiceBusState>();
 

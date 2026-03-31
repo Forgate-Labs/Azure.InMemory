@@ -1,11 +1,11 @@
-using Azure.InMemory.Blob;
-using Azure.InMemory.Blob.InMemory;
-using Azure.InMemory.Blob.Sdk;
+using Forgate.Azure.InMemory.Blob;
+using Forgate.Azure.InMemory.Blob.InMemory;
+using Forgate.Azure.InMemory.Blob.Sdk;
 using Azure.Storage.Blobs;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
-namespace Azure.InMemory.DependencyInjection;
+namespace Forgate.Azure.InMemory.DependencyInjection;
 
 public static class AzureBlobRegistrationExtensions
 {

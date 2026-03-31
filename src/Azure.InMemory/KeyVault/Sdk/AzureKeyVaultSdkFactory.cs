@@ -1,7 +1,7 @@
 using Azure;
 using Azure.Security.KeyVault.Secrets;
 
-namespace Azure.InMemory.KeyVault.Sdk;
+namespace Forgate.Azure.InMemory.KeyVault.Sdk;
 
 public sealed class AzureKeyVaultSdkFactory : IAzureKeyVaultFactory
 {

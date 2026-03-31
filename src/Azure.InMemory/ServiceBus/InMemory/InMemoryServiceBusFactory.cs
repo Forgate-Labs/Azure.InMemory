@@ -1,7 +1,7 @@
-using Azure.InMemory.ServiceBus;
+using Forgate.Azure.InMemory.ServiceBus;
 using Azure.Messaging.ServiceBus;
 
-namespace Azure.InMemory.ServiceBus.InMemory;
+namespace Forgate.Azure.InMemory.ServiceBus.InMemory;
 
 public sealed class InMemoryServiceBusFactory : IAzureServiceBusFactory
 {
@@ -82,8 +82,8 @@ public sealed class InMemoryServiceBusFactory : IAzureServiceBusFactory
 
     private sealed class InMemoryServiceBusProcessor : IAzureServiceBusProcessor
     {
-        private const string DefaultDeadLetterReason = "Dead-lettered by Azure.InMemory SDK adapter.";
-        private const string MaxDeliveryExceededDeadLetterReasonPrefix = "MaxDeliveryCount exhausted by Azure.InMemory SDK adapter.";
+        private const string DefaultDeadLetterReason = "Dead-lettered by Forgate.Azure.InMemory SDK adapter.";
+        private const string MaxDeliveryExceededDeadLetterReasonPrefix = "MaxDeliveryCount exhausted by Forgate.Azure.InMemory SDK adapter.";
         private const int UnsettledState = 0;
         private const int CompletedState = 1;
         private const int DeadLetteredState = 2;

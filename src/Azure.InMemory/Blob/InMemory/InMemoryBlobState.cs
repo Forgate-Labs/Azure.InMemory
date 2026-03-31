@@ -1,6 +1,6 @@
 using System.Collections.Concurrent;
 
-namespace Azure.InMemory.Blob.InMemory;
+namespace Forgate.Azure.InMemory.Blob.InMemory;
 
 public sealed class InMemoryBlobState
 {

@@ -1,13 +1,13 @@
 using Azure;
 using Azure.Core;
-using Azure.InMemory.DependencyInjection;
-using Azure.InMemory.KeyVault;
-using Azure.InMemory.KeyVault.InMemory;
-using Azure.InMemory.KeyVault.Sdk;
+using Forgate.Azure.InMemory.DependencyInjection;
+using Forgate.Azure.InMemory.KeyVault;
+using Forgate.Azure.InMemory.KeyVault.InMemory;
+using Forgate.Azure.InMemory.KeyVault.Sdk;
 using Azure.Security.KeyVault.Secrets;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Azure.InMemory.Tests.DependencyInjection;
+namespace Forgate.Azure.InMemory.Tests.DependencyInjection;
 
 public sealed class KeyVaultProviderRegistrationTests
 {

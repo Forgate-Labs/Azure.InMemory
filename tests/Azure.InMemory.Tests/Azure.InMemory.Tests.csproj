@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <AssemblyName>Azure.InMemory.Tests</AssemblyName>
-    <RootNamespace>Azure.InMemory.Tests</RootNamespace>
+    <AssemblyName>Forgate.Azure.InMemory.Tests</AssemblyName>
+    <RootNamespace>Forgate.Azure.InMemory.Tests</RootNamespace>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 

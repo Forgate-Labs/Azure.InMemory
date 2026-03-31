@@ -1,12 +1,12 @@
-using Azure.InMemory.DependencyInjection;
-using Azure.InMemory.ServiceBus;
-using Azure.InMemory.ServiceBus.InMemory;
-using Azure.InMemory.ServiceBus.Sdk;
+using Forgate.Azure.InMemory.DependencyInjection;
+using Forgate.Azure.InMemory.ServiceBus;
+using Forgate.Azure.InMemory.ServiceBus.InMemory;
+using Forgate.Azure.InMemory.ServiceBus.Sdk;
 using Azure.Messaging.ServiceBus;
 using Azure.Messaging.ServiceBus.Administration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Azure.InMemory.Tests.DependencyInjection;
+namespace Forgate.Azure.InMemory.Tests.DependencyInjection;
 
 public sealed class ServiceBusProviderRegistrationTests
 {
