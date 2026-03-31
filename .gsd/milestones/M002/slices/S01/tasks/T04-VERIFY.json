@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "taskId": "T04",
+  "unitId": "M002/S01/T04",
+  "timestamp": 1774925349630,
+  "passed": true,
+  "discoverySource": "task-plan",
+  "checks": [
+    {
+      "command": "dotnet test ./Azure.InMemory.sln --filter FullyQualifiedName~InMemoryServiceBusRedeliveryTests",
+      "exitCode": 0,
+      "durationMs": 4039,
+      "verdict": "pass"
+    },
+    {
+      "command": "dotnet test ./Azure.InMemory.sln --filter FullyQualifiedName~ServiceBus",
+      "exitCode": 0,
+      "durationMs": 3353,
+      "verdict": "pass"
+    },
+    {
+      "command": "dotnet test ./Azure.InMemory.sln",
+      "exitCode": 0,
+      "durationMs": 3388,
+      "verdict": "pass"
+    }
+  ]
+}

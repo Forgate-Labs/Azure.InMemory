@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "taskId": "T01",
+  "unitId": "M001/S01/T01",
+  "timestamp": 1774903110567,
+  "passed": true,
+  "discoverySource": "task-plan",
+  "checks": [
+    {
+      "command": "dotnet build Azure.InMemory.sln",
+      "exitCode": 0,
+      "durationMs": 2643,
+      "verdict": "pass"
+    }
+  ]
+}

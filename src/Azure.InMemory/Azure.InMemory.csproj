@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>Azure.InMemory</AssemblyName>
+    <RootNamespace>Azure.InMemory</RootNamespace>
+    <PackageId>Azure.InMemory</PackageId>
+    <Version>1.0.0</Version>
+    <Title>Azure.InMemory</Title>
+    <Description>Internal-friendly Azure resource seams with deterministic in-memory Service Bus, Blob, and Key Vault providers for infrastructure-free tests.</Description>
+    <Authors>Forgate Labs</Authors>
+    <Company>Forgate Labs</Company>
+    <PackageTags>azure;servicebus;blob;keyvault;testing;in-memory</PackageTags>
+    <PackageProjectUrl>https://github.com/Forgate-Labs/Azure.InMemory</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Forgate-Labs/Azure.InMemory.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Azure.Messaging.ServiceBus" />
+    <PackageReference Include="Azure.Security.KeyVault.Secrets" />
+    <PackageReference Include="Azure.Storage.Blobs" />
+    <PackageReference Include="Microsoft.Extensions.Azure" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\README.md" Pack="true" PackagePath="/" Link="README.md" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "taskId": "T02",
+  "unitId": "M002/S01/T02",
+  "timestamp": 1774924259686,
+  "passed": true,
+  "discoverySource": "task-plan",
+  "checks": [
+    {
+      "command": "test -f ./Azure.InMemory.sln",
+      "exitCode": 0,
+      "durationMs": 3,
+      "verdict": "pass"
+    },
+    {
+      "command": "test -f ./src/Azure.InMemory/ServiceBus/InMemory/InMemoryServiceBusState.cs",
+      "exitCode": 0,
+      "durationMs": 3,
+      "verdict": "pass"
+    },
+    {
+      "command": "test -f ./src/Azure.InMemory/ServiceBus/InMemory/InMemoryServiceBusFactory.cs",
+      "exitCode": 0,
+      "durationMs": 3,
+      "verdict": "pass"
+    },
+    {
+      "command": "test -f ./tests/Azure.InMemory.Tests/ServiceBus/InMemory/InMemoryServiceBusProcessorTests.cs",
+      "exitCode": 0,
+      "durationMs": 3,
+      "verdict": "pass"
+    },
+    {
+      "command": "dotnet test ./Azure.InMemory.sln --list-tests --filter FullyQualifiedName~InMemoryServiceBusProcessorTests",
+      "exitCode": 0,
+      "durationMs": 4183,
+      "verdict": "pass"
+    }
+  ]
+}
